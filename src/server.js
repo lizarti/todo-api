@@ -23,6 +23,6 @@ server.use((req, res, next) => {
   next()
 })
 server.use('/api', router)
-server.listen(3000, () => {
+server.listen(8080, () => {
   console.log('JSON Server is running')
 })
