@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TodoAPI</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body><div class="container"><h1 id="todo-api">TODO API</h1>
+
+
+
+<h2 id="endpoints">Endpoints</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Método</th>
+  <th>Endpoint</th>
+  <th>Descrição</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>GET</code></td>
+  <td><code>/api/todos</code></td>
+  <td>Lista todos os todos</td>
+</tr>
+<tr>
+  <td><code>POST</code></td>
+  <td><code>/api/todos</code></td>
+  <td>Cria um novo todo</td>
+</tr>
+<tr>
+  <td><code>GET</code></td>
+  <td><code>/api/todo/{id}</code></td>
+  <td>Seleciona o todo com o id especificado</td>
+</tr>
+<tr>
+  <td><code>PUT</code></td>
+  <td><code>/api/todo/{id}</code></td>
+  <td>Atualiza o todo com o id especificado</td>
+</tr>
+<tr>
+  <td><code>DELETE</code></td>
+  <td><code>/api/todo/{id}</code></td>
+  <td>Exclui o todo com o id especificado</td>
+</tr>
+</tbody></table>
+
+
+<hr>
+
+
+
+<h4 id="listar-todos-os-todos">Listar todos os todos</h4>
+
+<p><code>GET /api/todo</code></p>
+
+
+
+<h4 id="response">Response</h4>
+
+<p>200</p>
+
+
+
+<h5 id="headers">Headers</h5>
+
+<p><code>content-type: application/json</code></p>
+
+
+
+<h5 id="body">Body</h5>
+
+
+
+<pre class="prettyprint"><code class="language-json hljs ">[
+    {
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Todo 1"</span></span>,
+        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 09:18:10"</span></span>,
+        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 09:18:10"</span></span>,
+        "<span class="hljs-attribute">done</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Todo 2"</span></span>,
+        "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 09:24:31"</span></span>,
+        "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 09:24:31"</span></span>,
+        "<span class="hljs-attribute">done</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+    </span>}
+]</code></pre>
+
+<hr>
+
+
+
+<h4 id="criar-um-novo-todo">Criar um novo todo</h4>
+
+<p><code>POST /api/todos</code></p>
+
+
+
+<h4 id="request">Request</h4>
+
+
+
+<h5 id="headers-1">Headers</h5>
+
+<p><code>content-type: application/json</code></p>
+
+
+
+<h5 id="body-1">Body</h5>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">let</span> todo = {
+    text: <span class="hljs-string">'Todo 3'</span>
+}</code></pre>
+
+
+
+<h4 id="response-1">Response</h4>
+
+<p>201</p>
+
+
+
+<h5 id="headers-2">Headers</h5>
+
+<p><code>content-type: application/json</code></p>
+
+
+
+<h5 id="body-2">Body</h5>
+
+
+
+<pre class="prettyprint"><code class="language-json hljs ">{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Todo 3"</span></span>,
+    "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 11:43:32"</span></span>,
+    "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 11:43:32"</span></span>,
+    "<span class="hljs-attribute">done</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span>
+</span>}</code></pre>
+
+<hr>
+
+
+
+<h4 id="selecionar-um-todo-com-o-id-especificado">Selecionar um todo com o id especificado</h4>
+
+<p><code>GET /api/todos/{id}</code></p>
+
+
+
+<h4 id="response-2">Response</h4>
+
+<p>200</p>
+
+
+
+<h5 id="headers-3">Headers</h5>
+
+<p><code>content-type: application/json</code></p>
+
+
+
+<h5 id="body-3">Body</h5>
+
+
+
+<pre class="prettyprint"><code class="language-json hljs ">{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Tarefa 1"</span></span>,
+    "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 09:18:10"</span></span>,
+    "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 09:18:10"</span></span>,
+    "<span class="hljs-attribute">done</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}</code></pre>
+
+<hr>
+
+
+
+<h4 id="atualizar-um-recurso-com-o-id-especificado">Atualizar um recurso com o id especificado</h4>
+
+<p><code>PUT /api/todos/{id}</code></p>
+
+
+
+<h4 id="request-1">Request</h4>
+
+
+
+<h5 id="headers-4">Headers</h5>
+
+<p><code>content-type: application/json</code></p>
+
+
+
+<h5 id="body-4">Body</h5>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">{
+    title: <span class="hljs-string">"Tarefa 3"</span>,
+    created_at: <span class="hljs-string">"2018-9-27 11:43:32"</span>,
+    updated_at: <span class="hljs-string">"2018-9-27 11:55:25"</span>,
+    done: <span class="hljs-literal">true</span>,
+    id: <span class="hljs-number">3</span>
+}</code></pre>
+
+
+
+<h4 id="response-3">Response</h4>
+
+<p>200</p>
+
+
+
+<h5 id="headers-5">Headers</h5>
+
+<p><code>content-type: application/json</code></p>
+
+
+
+<h5 id="body-5">Body</h5>
+
+
+
+<pre class="prettyprint"><code class="language-json hljs ">{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Tarefa 1"</span></span>,
+    "<span class="hljs-attribute">created_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 11:43:32"</span></span>,
+    "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-9-27 11:55:25"</span></span>,
+    "<span class="hljs-attribute">done</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span>
+</span>}</code></pre>
+
+<blockquote>
+  <p>Embora o método seja PUT, você não precisa enviar todos os campos.  <br>
+  O recurso não terá sua estrutura modificada de acordo com os dados enviados. Isso quer dizer que ocorrerá somente uma modificação (alteração de valor) nas propriedades enviadas.  <br>
+  Ou seja, é como o método PATCH (pra essa API os métodos PATCH e PUT são a mesma coisa).</p>
+</blockquote>
+
+
+
+<h4 id="deletar-um-recurso-com-o-id-especificado">Deletar um recurso com o id especificado</h4>
+
+<p><code>DELETE /api/todos/{id}</code></p>
+
+
+
+<h4 id="response-4">Response</h4>
+
+<p>200</p>
+
+
+
+<h5 id="headers-6">Headers</h5>
+
+<p><code>content-type: application/json</code></p>
+
+
+
+<h5 id="body-6">Body</h5>
+
+
+
+<pre class="prettyprint"><code class="language-json hljs ">    {}</code></pre></div></body>
+</html>
